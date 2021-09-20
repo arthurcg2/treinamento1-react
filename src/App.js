@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Form from "./components/Form/";
+import "./App.css";
 
 function App() {
+  const [data, setData] = useState({ name: "", age: "", number: "" });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <div className="form-section">
+        <h2>Mostrar/esconder</h2>
+        <Form submitAction={setData} />
+      </div>
+      <hr />
+      <div className="show">
+        <h2>Nome: {data.name}</h2>
+        <h2>Idade: {data.age}</h2>
+        <h2>Número: {data.number}</h2>
+      </div>
     </div>
   );
 }

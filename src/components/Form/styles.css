@@ -1,0 +1,27 @@
+#form {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  margin-top: 15px;
+  height: 40px;
+  outline: none;
+  border: none;
+
+  border-radius: 2pt;
+  background-color: #eee;
+
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+button {
+  margin-top: 30px;
+  height: 64px;
+  border-radius: 3pt;
+  font-size: large;
+
+  background-color: #bdecb6;
+  border-color: #bdecb6;
+}
