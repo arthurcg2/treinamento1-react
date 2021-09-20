@@ -7,20 +7,24 @@ function App() {
   const [isOpen, setIsOpen] = useState(true);
   const [data, setData] = useState();
 
+  const toggleOpen = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <div className="container">
       <div className="form-section">
-        <p
-          onClick={() => {
-            setIsOpen(!isOpen);
-          }}
-        >
-          {isOpen ? "▲" : "▼"} Mostrar/esconder
-        </p>
+        <p onClick={toggleOpen}>{isOpen ? "▲" : "▼"} Mostrar/esconder</p>
+
         {isOpen && <Form submitAction={setData} />}
       </div>
 
-      {data && <InfoDisplay info={data} />}
+      {data && (
+        <>
+          <div className="divider"></div>
+          <InfoDisplay info={data} />
+        </>
+      )}
     </div>
   );
 }

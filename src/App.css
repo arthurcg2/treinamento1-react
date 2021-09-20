@@ -11,10 +11,11 @@
   font-size: large;
 }
 
-.show {
-  margin-left: 5%;
+.form-section {
+  margin-right: 5%;
 }
 
-.show h3 {
-  margin-top: 20px;
+.divider {
+  height: 360px;
+  border-left: 2px solid black;
 }
