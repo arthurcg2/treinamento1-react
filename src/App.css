@@ -7,18 +7,14 @@
   justify-content: center;
 }
 
+.container p {
+  font-size: large;
+}
+
 .show {
   margin-left: 5%;
 }
 
-.show h2 {
+.show h3 {
   margin-top: 20px;
-}
-
-hr {
-  width: 2;
-  height: 500;
-  display: inline-block;
-  border: none;
-  background-color: black;
 }

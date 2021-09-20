@@ -3,20 +3,29 @@ import Form from "./components/Form/";
 import "./App.css";
 
 function App() {
-  const [data, setData] = useState({ name: "", age: "", number: "" });
+  const [isOpen, setIsOpen] = useState(true);
+  const [data, setData] = useState();
 
   return (
     <div className="container">
       <div className="form-section">
-        <h2>Mostrar/esconder</h2>
-        <Form submitAction={setData} />
+        <p
+          onClick={() => {
+            setIsOpen(!isOpen);
+          }}
+        >
+          {isOpen ? "▲" : "▼"} Mostrar/esconder
+        </p>
+        {isOpen && <Form submitAction={setData} />}
       </div>
-      <hr />
-      <div className="show">
-        <h2>Nome: {data.name}</h2>
-        <h2>Idade: {data.age}</h2>
-        <h2>Número: {data.number}</h2>
-      </div>
+
+      {data && (
+        <div className="show">
+          <h3>Nome: {data.name}</h3>
+          <h3>Idade: {data.age}</h3>
+          <h3>Número: {data.number}</h3>
+        </div>
+      )}
     </div>
   );
 }
