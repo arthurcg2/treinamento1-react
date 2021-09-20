@@ -1,47 +1,52 @@
 import { useState } from "react";
 import "./styles.css";
 
+const infosModel = {
+  name: {
+    placeholder: "Nome",
+    type: "text",
+  },
+  age: {
+    placeholder: "Idade",
+    type: "number",
+  },
+  number: {
+    placeholder: "Número",
+    type: "number",
+  },
+};
+
 const Form = ({ submitAction }) => {
-  const [info, setInfo] = useState({ name: "", age: "", number: "" });
+  const [infos, setInfos] = useState({ name: "", age: "", number: "" });
 
   const handleChange = (e) => {
-    setInfo({ ...info, [e.target.name]: e.target.value });
+    setInfos({ ...infos, [e.target.name]: e.target.value });
+  };
+
+  const submit = (e) => {
+    e.preventDefault();
+    console.log(infos);
+    submitAction(infos);
+    setInfos({ name: "", age: "", number: "" });
   };
 
   return (
-    <div id="form">
-      <input
-        name="name"
-        type="text"
-        placeholder="Nome"
-        onChange={handleChange}
-        value={info.name}
-      ></input>
+    <form>
+      {Object.entries(infos).map((info, i) => (
+        <input
+          name={info[0]}
+          type={infosModel[info[0]].type}
+          placeholder={infosModel[info[0]].placeholder}
+          onChange={handleChange}
+          value={info[1]}
+          key={i}
+        ></input>
+      ))}
 
-      <input
-        name="age"
-        type="text"
-        placeholder="Idade"
-        onChange={handleChange}
-        value={info.age}
-      ></input>
-
-      <input
-        name="number"
-        type="number"
-        placeholder="Número"
-        onChange={handleChange}
-        value={info.number}
-      ></input>
-
-      <button
-        onClick={() => {
-          submitAction(info);
-        }}
-      >
+      <button type="submit" onClick={submit}>
         Enviar
       </button>
-    </div>
+    </form>
   );
 };
 

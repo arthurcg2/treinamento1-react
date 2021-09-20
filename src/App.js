@@ -11,12 +11,17 @@ function App() {
     setIsOpen(!isOpen);
   };
 
+  const infoSubmit = (data) => {
+    setData(data);
+    setIsOpen(false);
+  };
+
   return (
     <div className="container">
       <div className="form-section">
         <p onClick={toggleOpen}>{isOpen ? "▲" : "▼"} Mostrar/esconder</p>
 
-        {isOpen && <Form submitAction={setData} />}
+        {isOpen && <Form submitAction={infoSubmit} />}
       </div>
 
       {data && (
