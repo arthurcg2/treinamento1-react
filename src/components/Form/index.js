@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React from "react";
 import "./styles.css";
 
 const infosModel = {
@@ -16,38 +16,45 @@ const infosModel = {
   },
 };
 
-const Form = ({ submitAction }) => {
-  const [infos, setInfos] = useState({ name: "", age: "", number: "" });
+export default class Form extends React.Component {
+  constructor(props) {
+    super(props);
 
-  const handleChange = (e) => {
-    setInfos({ ...infos, [e.target.name]: e.target.value });
+    this.state = {
+      name: "",
+      age: "",
+      number: "",
+    };
+  }
+
+  handleChange = (e) => {
+    this.setState({ ...this.state, [e.target.name]: e.target.value });
   };
 
-  const submit = (e) => {
+  submit = (e) => {
     e.preventDefault();
-    console.log(infos);
-    submitAction(infos);
-    setInfos({ name: "", age: "", number: "" });
+    this.props.submitAction(this.state);
+    this.setState({ name: "", age: "", number: "" });
   };
 
-  return (
-    <form>
-      {Object.entries(infos).map((info, i) => (
-        <input
-          name={info[0]}
-          type={infosModel[info[0]].type}
-          placeholder={infosModel[info[0]].placeholder}
-          onChange={handleChange}
-          value={info[1]}
-          key={i}
-        ></input>
-      ))}
+  render() {
+    return (
+      <form>
+        {Object.entries(this.state).map((info, i) => (
+          <input
+            name={info[0]}
+            type={infosModel[info[0]].type}
+            placeholder={infosModel[info[0]].placeholder}
+            onChange={this.handleChange}
+            value={info[1]}
+            key={i}
+          ></input>
+        ))}
 
-      <button type="submit" onClick={submit}>
-        Enviar
-      </button>
-    </form>
-  );
-};
-
-export default Form;
+        <button type="submit" onClick={this.submit}>
+          Enviar
+        </button>
+      </form>
+    );
+  }
+}
