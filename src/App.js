@@ -1,7 +1,7 @@
 import React from "react";
 import Form from "./components/Form/";
 import InfoDisplay from "./components/InfoDisplay";
-import "./App.css";
+import "./App.scss";
 
 export default class App extends React.Component {
   constructor(props) {
