@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Form from "./components/Form/";
+import InfoDisplay from "./components/InfoDisplay";
 import "./App.css";
 
 function App() {
@@ -19,13 +20,7 @@ function App() {
         {isOpen && <Form submitAction={setData} />}
       </div>
 
-      {data && (
-        <div className="show">
-          <h3>Nome: {data.name}</h3>
-          <h3>Idade: {data.age}</h3>
-          <h3>Número: {data.number}</h3>
-        </div>
-      )}
+      {data && <InfoDisplay info={data} />}
     </div>
   );
 }
